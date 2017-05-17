@@ -39,6 +39,9 @@ public class MainActivity extends AppCompatActivity {
                         if(x>=getPhoneWidth()-118){
                             x = getPhoneWidth()-118;
                         }
+                        if(x<=1){
+                            x = 0;
+                        }
                         iv1.setX(x);
                         break;
                     case MotionEvent.ACTION_UP:
