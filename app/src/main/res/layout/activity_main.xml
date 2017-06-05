@@ -2,19 +2,22 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/rl">
 
     <ImageView
         android:id="@+id/skill"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:src="@mipmap/ic_launcher" />
 
     <ImageView
         android:id="@+id/minion"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/minion" />
+        android:src="@drawable/minion"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/base"
