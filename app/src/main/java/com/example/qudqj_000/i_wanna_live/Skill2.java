@@ -18,10 +18,14 @@ public class Skill2 {
     public Skill2(int x, Context context){
         this.x = x;
         y = 0;
-        dy = 10;
-        skill2 = BitmapFactory.decodeResource(context.getResources(),R.mipmap.ic_launcher);
+        dy = 15;
+        skill2 = BitmapFactory.decodeResource(context.getResources(),R.drawable.anivia_q);
+        int dw = skill2.getWidth() * 2;
+        int dh = skill2.getHeight() * 2;
+        skill2 = Bitmap.createScaledBitmap(skill2, dw, dh, false);
         sw = skill2.getWidth()/2;
         sh = skill2.getHeight()/2;
+
     }
 
     public boolean Move(){

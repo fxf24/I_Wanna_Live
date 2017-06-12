@@ -5,32 +5,32 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 /**
- * Created by qudqj_000 on 2017-06-07.
+ * Created by qudqj_000 on 2017-06-12.
  */
 
-
-public class Skill1 {
+public class Skill3{
     public int x, y ;
     private int dy;
-    Bitmap skill1;
+    Bitmap skill3;
     public int sw, sh;
 
 
-    public Skill1(int x, Context context){
+    public Skill3(int x, Context context){
         this.x = x;
         y = 0;
-        dy = 20;
-        skill1 = BitmapFactory.decodeResource(context.getResources(),R.drawable.ez_q);
-        sw = skill1.getWidth()/2;
-        sh = skill1.getHeight()/2;
+        dy = 25;
+        skill3 = BitmapFactory.decodeResource(context.getResources(),R.drawable.varus_q);
+        sw = skill3.getWidth()/2;
+        sh = skill3.getHeight()/2;
+
     }
 
     public boolean Move(){
         y += dy;
 
         if(y>GameView.height)
-           return true;
+            return true;
         else
-           return false;
+            return false;
     }
 }

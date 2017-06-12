@@ -6,11 +6,13 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:background="@drawable/background"
         android:id="@+id/home_Menu"
-        android:layout_gravity="center"
         android:visibility="visible"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center">
 
         <Button
             android:id="@+id/start"
@@ -18,6 +20,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="start"/>
+        <Button
+            android:id="@+id/ranking"
+            android:text="ranking"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
     <com.example.qudqj_000.i_wanna_live.GameView
