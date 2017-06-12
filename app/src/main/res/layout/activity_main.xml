@@ -21,16 +21,11 @@
             android:layout_height="wrap_content"
             android:text="start"/>
         <Button
+            android:onClick="onClick"
             android:id="@+id/ranking"
             android:text="ranking"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
-
-    <com.example.qudqj_000.i_wanna_live.GameView
-        android:visibility="invisible"
-        android:id="@+id/gameView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 </FrameLayout>

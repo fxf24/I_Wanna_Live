@@ -18,7 +18,7 @@ public class Skill5 {
     public Skill5(int x, Context context){
         this.x = x;
         y = 0;
-        dy = 30;
+        dy = 35;
         skill5 = BitmapFactory.decodeResource(context.getResources(),R.drawable.sivir_q);
         sw = skill5.getWidth()/2;
         sh = skill5.getHeight()/2;

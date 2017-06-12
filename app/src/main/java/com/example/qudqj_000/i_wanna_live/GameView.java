@@ -24,8 +24,8 @@ import java.util.ArrayList;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     GameThread gameThread;
-    public static SurfaceHolder holder;
-    public static Context mContext;
+    public SurfaceHolder holder;
+    public Context mContext;
     Bitmap background, minion;
     int mw, mh;
     float mX = 0, mY;
@@ -109,7 +109,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        gameThread.setDaemon(true);
+//        gameThread.setDaemon(true);
         gameThread.start();
 //        skillThread.setDaemon(true);
 //        skillThread.start();
@@ -127,7 +127,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public void StopGame() {
         gameThread.StopThread();
-
     }
 
     public void PauseGame() {
@@ -139,7 +138,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void RestartGame() {
-        gameThread.StopThread();
 
         gameThread = null;
         gameThread = new GameThread(mContext, holder);
@@ -187,6 +185,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         int skill8_count = -1;
         int skill9_count = -1;
         int skill10_count = -1;
+        int stage = 1;
 
         Context context;
         int score = 0;
@@ -240,7 +239,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         @Override
         public void run() {
-            Canvas canvas;
+            Canvas canvas = null;
             while (canRun) {
                 canvas = holder.lockCanvas();
 
@@ -249,15 +248,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                         time_count++;
                         drawAll(canvas);
                         skillShots();
-                        EndOfTheGame();
                     }
                 }
-//                catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
                 finally {
-                    if (canvas != null)
+                    if(canvas !=null)
                         holder.unlockCanvasAndPost(canvas);
+                    EndOfTheGame();
                 }
 
                 synchronized (this) {
@@ -270,7 +266,6 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                     }
                 }
             }
-
         }
 
         void skillShots(){
@@ -283,6 +278,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 330) {
+                stage = 2;
                 if (time_count % 60 == 0) {
                     skill2_count++;
                     if (skill2_count > 1)
@@ -292,6 +288,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 660) {
+                stage =3;
                 if (time_count % 30 == 0) {
                     skill3_count++;
                     if (skill3_count > 3)
@@ -301,6 +298,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 990) {
+                stage =4;
                 if (time_count % 30 == 0) {
                     skill4_count++;
                     if (skill4_count > 1)
@@ -310,6 +308,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 1320) {
+                stage =5;
                 if (time_count % 30 == 0) {
                     skill5_count++;
                     if (skill5_count > 2)
@@ -319,6 +318,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 1650) {
+                stage =6;
                 if (time_count % 30 == 0) {
                     skill6_count++;
                     if (skill6_count > 4)
@@ -328,6 +328,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 1980) {
+                stage =7;
                 if (time_count % 60 == 0) {
                     skill7_count++;
                     if (skill7_count > 2)
@@ -337,6 +338,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 2310) {
+                stage =8;
                 if (time_count % 60 == 0) {
                     skill8_count++;
                     if (skill8_count > 3)
@@ -346,6 +348,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 2670) {
+                stage =9;
                 if (time_count % 30 == 0) {
                     skill9_count++;
                     if (skill9_count > 3)
@@ -355,6 +358,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             }
 
             if (time_count >= 3000) {
+                stage =10;
                 if (time_count % 60 == 0) {
                     skill10_count++;
                     if (skill10_count > 1)
@@ -366,6 +370,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         private void drawScore(Canvas canvas) {
             if (canvas != null) {
                 scoreTxt = String.valueOf(score) + "점";
+                canvas.drawText("STAGE " + String.valueOf(stage), 0, height*5/100, paint);
                 canvas.drawText("SCORE : " + String.valueOf(score), width / 4, height * 5 / 100, paint);
             }
         }
