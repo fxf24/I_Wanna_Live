@@ -20,7 +20,7 @@ public class Skill1 {
         this.x = x;
         y = 0;
         dy = 15;
-        skill1 = BitmapFactory.decodeResource(context.getResources(),R.mipmap.ic_launcher);
+        skill1 = BitmapFactory.decodeResource(context.getResources(),R.drawable.ez_q);
         sw = skill1.getWidth()/2;
         sh = skill1.getHeight()/2;
     }
